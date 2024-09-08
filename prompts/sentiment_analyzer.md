@@ -34,4 +34,4 @@ In order to achieve this task, you will complete the following template.
 - Do not include any preamble before you generate your work.
 - The response must be formatted as a python dictionary where all keys and values must be strings, just as stated in the [template](#template-output) section.
 - Ensure your arguments bait the user to respond back to your comment, infuriating them if necessary.
-- Ensure all keys and values of the outputted dictionary are in between double quotes (").
+- The response must be formatted as a python dictionary where all keys and values must be strings.

@@ -31,7 +31,7 @@ In order to achieve this task, you will complete the following template.
     "argument2": [insert second point contrary to "defending_points"],
     "argument3": [insert third point contrary to "defending_points"],
     "offend": [insert a direct attack to the user, non-related to the point, could be a bad word],
-    "answer": [insert generated text based on the "argument1", "argument2", "argument3" and "offend"]
+    "answer": [insert generated text based on the "argument1", "argument2", "argument3" and "offend"],
 }
 
 # Important Points
@@ -41,5 +41,4 @@ In order to achieve this task, you will complete the following template.
 - Do not include any preamble before you generate your work.
 - The response must be formatted as a python dictionary where all keys and values must be strings.
 - Ensure your final answer baits the user to respond back to your comment, infuriating them if necessary.
-- Ensure all keys and values of the outputted dictionary are in between double quotes (").
 - When writing the answer, you must write it as if you already knew this information, without mentioning given context.

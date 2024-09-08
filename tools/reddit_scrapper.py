@@ -44,7 +44,6 @@ def reddit_scrapper(input_list):
 }}""")
             else:
                 result.append("Pinned post.")
-        print(result)
         result = "\n\n".join(result)
         return result
 

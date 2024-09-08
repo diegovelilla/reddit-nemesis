@@ -2,7 +2,7 @@ from groq import Groq
 from dotenv import dotenv_values
 import json
 
-CONFIG = dotenv_values("./config/.env")
+CONFIG = dotenv_values("config/.env")
 
 
 class llama_3_1_70B:
@@ -40,21 +40,3 @@ class llama_3_1_70B:
         )
 
         return response.choices[0].message.content
-
-
-if __name__ == "__main__":
-    model = llama_3_1_70B()
-    system_prompt_sentiment_analyzer = ""
-    system_prompt_writer = ""
-    with open("prompts/sentiment_analizer.md", "r") as file:
-        system_prompt_sentiment_analyzer = file.read()
-    with open("prompts/writer.md", "r") as file:
-        system_prompt_writer = file.read()
-
-    prompt = """hello (no hate)"""
-    analyze = model.answer(
-        system_prompt=system_prompt_sentiment_analyzer, prompt=prompt)
-
-    response = model.answer(system_prompt=system_prompt_writer, prompt=analyze)
-    response = json.loads(response)
-    print(response["answer"])

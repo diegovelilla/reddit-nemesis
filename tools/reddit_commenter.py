@@ -30,7 +30,6 @@ def reddit_commenter(input_list):
     )
 
     try:
-        # Get the subreddit
         post = reddit.submission(id=id_comment)
         replied = post.reply(comment)
         return replied
