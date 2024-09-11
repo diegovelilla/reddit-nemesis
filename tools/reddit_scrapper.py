@@ -29,6 +29,8 @@ def reddit_scrapper(input_list):
 
     try:
         # Get the subreddit
+        user = reddit.redditor("TARGET_USERNAME")
+
         subreddit = reddit.subreddit(subreddit_name)
         top_posts = subreddit.top(limit=num_posts, time_filter="day")
 
