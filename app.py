@@ -16,17 +16,19 @@ def prepare_system_prompts():
 def chain_of_action(model, system_prompt_sentiment_analyzer, system_prompt_writer):
     # If you want to try it out with your own text, comment the block of code below
     # (from reddit_scrape =, to post_id =) and uncomment this:
-    """
-    post = "Your text here"
-    """
+
+    post = "life is getting more and more expensive"
+
     try:
+        """
         # Scrape reddit posts for questions
         reddit_scrape = reddit_scrapper(["unpopularopinion", "1"])
         post = json.loads(reddit_scrape)
         print(type(post))
         print(colored("Somebody in reddit has this question:", "magenta"))
-        print(f"""Title: {post["Title"]}\nBody: {post["Body"]}""")
+        print(f"Title: {post["Title"]}\nBody: {post["Body"]}")
         post_id = post["id"]
+        """
 
         # Give post to sentiment analyzer
         plan_prompt = f"""
@@ -36,7 +38,7 @@ def chain_of_action(model, system_prompt_sentiment_analyzer, system_prompt_write
         """
 
         analysis = model.answer(
-            system_prompt=system_prompt_sentiment_analyzer, prompt=plan_prompt)
+            system_prompt=system_prompt_sentiment_analyzer, prompt=plan_prompt, json=True)
         print(analysis)
         analysis = json.loads(analysis)
         print(colored("\nWhat I've extracted from this post:",
@@ -58,14 +60,13 @@ def chain_of_action(model, system_prompt_sentiment_analyzer, system_prompt_write
         }}
         """
         writer = model.answer(
-            system_prompt=system_prompt_writer, prompt=write_prompt)
+            system_prompt=system_prompt_writer, prompt=write_prompt, json=False)
         print(writer)
-        writer = json.loads(writer)
         print("My answer:")
-        print(colored(f"""\n\n{writer["answer"]}""", "cyan"))
+        print(colored(f"""\n\n{writer}""", "cyan"))
 
         # Use the reddit_commenter tool. Uncomment next line to actually write a comment under the post
-        # reddit_commenter(post_id, writer["answer"])
+        # reddit_commenter(post_id, writer)
 
     except Exception as e:
         print(colored("There was an error parsing the JSON object, probably, the model outputted a wrongly formatted JSON object. Try to run the program again :)", "green"))
