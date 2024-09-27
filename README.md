@@ -21,7 +21,7 @@
 ---
 
 ## Overview
-Reddit-Nemesis is an AI-powered Reddit bot that scrapes through subreddits, finds posts, and leaves pseudo-friendly comment contraring every single point on the original post. This project is the evil-version of my other project: [reddit-omni](https://github.com/diegovelilla/reddit-omni), which automatizes question-answering on reddit posts.
+Reddit-Nemesis is an AI-powered Reddit bot that scrapes through subreddits, finds posts, and leaves pseudo-friendly comment contracting every single point on the original post. This project is the evil-version of my other project: [reddit-omni](https://github.com/diegovelilla/reddit-omni), which automatizes question-answering on reddit posts.
 
 ## Features
 - Promoting social interaction
