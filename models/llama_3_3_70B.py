@@ -4,14 +4,14 @@ from dotenv import dotenv_values
 CONFIG = dotenv_values("config/.env")
 
 
-class llama_3_1_70B:
+class llama_3_3_70B:
 
     def __init__(self):
         """
         Initializes the llama-3.1-70B with the given parameters.
         """
         self.client = Groq(api_key=CONFIG["GROQ_API_KEY"])
-        self.model_name = "llama-3.1-70b-versatile"
+        self.model_name = "llama-3.3-70b-versatile"
 
     def answer(self, system_prompt, prompt, json):
         """
