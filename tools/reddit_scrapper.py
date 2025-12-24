@@ -1,5 +1,6 @@
 from dotenv import dotenv_values
 import praw
+import json
 
 
 def reddit_scrapper(input_list):
@@ -37,17 +38,14 @@ def reddit_scrapper(input_list):
         result = []
         for post in top_posts:
             if not post.stickied:
-                body = (post.selftext).replace("\n", " ")
-                result.append(
-                    f"""{{
-    "Title": "{post.title}",
-    "Body": "{body}",
-    "id": "{post.id}"
-}}""")
-            else:
-                result.append("Pinned post.")
-        result = "\n\n".join(result)
-        return result
+                body = post.selftext.replace("\n", " ")
+                post_data = {
+                    "Title": post.title,
+                    "Body": body,
+                    "id": post.id
+                }
+                result.append(post_data)
+        return json.dumps(result, indent=4, ensure_ascii=False)
 
     except Exception as e:
         return f"An unexpected error occurred: {e}"
