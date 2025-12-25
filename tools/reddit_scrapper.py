@@ -48,4 +48,4 @@ def reddit_scrapper(input_list):
         return json.dumps(result, indent=4, ensure_ascii=False)
 
     except Exception as e:
-        return f"An unexpected error occurred: {e}"
+        return json.dumps({"error": str(e)})
