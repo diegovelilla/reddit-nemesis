@@ -1,4 +1,4 @@
-from models.llama_3_1_70B import llama_3_1_70B
+from models.llama_3_3_70B import llama_3_3_70B
 from tools.reddit_scrapper import reddit_scrapper
 from tools.reddit_commenter import reddit_commenter
 from termcolor import colored
@@ -81,7 +81,7 @@ def chain_of_action(model, system_prompt_sentiment_analyzer, system_prompt_write
 
 if __name__ == "__main__":
 
-    model = llama_3_1_70B()
+    model = llama_3_3_70B()
     system_prompt_sentiment_analyzer, system_prompt_writer = prepare_system_prompts()
     chain_of_action(model, system_prompt_sentiment_analyzer=system_prompt_sentiment_analyzer,
                     system_prompt_writer=system_prompt_writer)
