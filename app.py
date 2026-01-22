@@ -23,10 +23,16 @@ def chain_of_action(model, system_prompt_sentiment_analyzer, system_prompt_write
         """
         # Scrape reddit posts for questions
         reddit_scrape = reddit_scrapper(["unpopularopinion", "1"])
-        post = json.loads(reddit_scrape)
-        print(type(post))
+        posts = json.loads(reddit_scrape)
+        if isinstance(posts, dict) and "error" in posts:
+            print(colored(f"Reddit scraping failed: {posts['error']}", "red"))
+            return
+        if not posts:
+            print(colored("No posts found.", "red"))
+            return
+        post = posts[0]
         print(colored("Somebody in reddit has this question:", "magenta"))
-        print(f"Title: {post["Title"]}\nBody: {post["Body"]}")
+        print(f"Title: {post['Title']}\nBody: {post['Body']}")
         post_id = post["id"]
         """
 
